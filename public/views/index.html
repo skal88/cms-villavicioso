@@ -1,0 +1,20 @@
+<html ng-app="myApp">
+<head>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+	<title>CMS de villavicioso</title>
+</head>
+<body>
+<div ng-controller="gastosCtrl">
+	<button ng-click="obtener()">Send AJAX Request</button>
+	<input type="text" ng-model="title">
+	<button ng-click="insertGasto()">Insertar gasto</button>
+	<ul>
+		<li ng-repeat="gasto in gastos">{{gasto.title}}<!-- {{ id = gasto._id}} --><button ng-click="deleteGasto(gasto._id)">X</button></li>
+	</ul>
+	{{status}}
+</div>
+
+
+</body>
+</html>

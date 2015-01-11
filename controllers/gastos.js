@@ -28,10 +28,11 @@ exports.addGasto = function(req, res) {
 	console.log(req.body);
 
 	var gasto = new Gastos({
-		title:    req.body.title,
-		date: 	  req.body.date,
-		price:  req.body.country,
-		user:   req.body.poster,
+		title:  req.body.title,
+		description: req.body.description,
+		date: 	req.body.date,
+		price:  req.body.price,
+		user:   req.body.user,
 	});
 
 	gasto.save(function(err, gasto) {
@@ -44,13 +45,11 @@ exports.addGasto = function(req, res) {
 //PUT - Update a register already exists
 exports.updateGasto = function(req, res) {
 	Gastos.findById(req.params.id, function(err, gasto) {
-		gasto.title   = req.body.petId;
-		gasto.year    = req.body.year;
-		gasto.country = req.body.country;
-		gasto.poster  = req.body.poster;
-		gasto.seasons = req.body.seasons;
-		gasto.genre   = req.body.genre;
-		gasto.summary = req.body.summary;
+		gasto.title   = req.body.title; //req.body.petId;
+		gasto.description = req.body.description;
+		gasto.date    = req.body.date;
+		gasto.price = req.body.price;
+		gasto.user  = req.body.user;
 
 		gasto.save(function(err) {
 			if(err) return res.send(500, err.message);

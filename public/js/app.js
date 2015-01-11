@@ -71,11 +71,14 @@ var myApp = angular.module('myApp', [])
           });
     };
 
-    $scope.insertGasto = function (obj) {
+    $scope.insertGasto = function () {
         //Fake customer data
         var obj = {
             title: $scope.title,
+            description: $scope.description,
+            date: new Date()
         };
+        console.log(obj);
         gastosFactory.insertGasto(obj)
             .success(function (data) {
                 $scope.status = 'Inserted Customer! Refreshing customer list.';
@@ -83,6 +86,7 @@ var myApp = angular.module('myApp', [])
             }).
             error(function(error) {
                 $scope.status = 'Unable to insert customer: ' + error.message;
+                console.log(error)
             });
     };
 
